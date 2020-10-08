@@ -13,9 +13,9 @@ var current_floor = 5; //電梯目前位於5樓
 var target_floor; //欲到達樓層 
 var min = -5; //最低樓層，-2為第下三樓B3，-1為第下三樓B2，0代表B1
 var max = 101; //最高樓層, 
-var strFloor = ['B1'];
-if (min < 0) {
-    for (fNum = -1; fNum >= min; fNum--)
+var strFloor = [];
+if (min <= 0) {
+    for (fNum = 0; fNum >= min; fNum--)
         strFloor.push('B' + (fNum * -1 + 1));
     console.log(strFloor.toString());
 }
