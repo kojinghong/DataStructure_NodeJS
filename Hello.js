@@ -14,21 +14,32 @@ console.log("Hello! Your BMI value is "+ bmi);
 //另可透過package.json指定所有相關套件後 npm install 即可安裝所有套件
 
 const readline = require('readline-sync');
-weight = readline.question('請輸入您的體重(kg)?');
+//weight = readline.question('請輸入您的體重(kg)?');
 height = readline.question('請輸入您的身高(cm)?');  
-weight = Number(weight);
+//weight = Number(weight);
 height = Number(height);
 
-if(isNaN(weight) || isNaN(height))
+if(isNaN(height) ||  height<0 || height>230 )
     console.log("輸入資料有誤!");
-else if(weight<0 || weight>200 || height<0 || height>250)
-    console.log("輸入資料有誤!");
-else
-    console.log("Your BMI value is "+ BMI(weight, height));
-
+else{
+    height = height/100;
+    var ideaLow = 18.5 * height**2;
+    var ideaHigh = 24 * height*height; 
+    console.log("你的理想體重範圍為: "+ ideaLow + " ~ "+ ideaHigh);
+}
 function BMI(w, h){
     return Math.round(weight/((height/100)**2)*100)/100;
 }
+// if(isNaN(weight) || isNaN(height))
+//     console.log("輸入資料有誤!");
+// else if(weight<0 || weight>200 || height<0 || height>250)
+//     console.log("輸入資料有誤!");
+// else
+//     console.log("Your BMI value is "+ BMI(weight, height));
+
+// function BMI(w, h){
+//     return Math.round(weight/((height/100)**2)*100)/100;
+// }
 
 //not only bmi value, but also judgement
 //Ask user to input height only, is it workable?

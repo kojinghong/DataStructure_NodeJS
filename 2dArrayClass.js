@@ -1,17 +1,17 @@
 const readline = require('readline-sync');
 
-var row = 5, col = 5;
+var rowMax = 5, colMax = 5;
 
 class Index {   //定義物件類別
     constructor(_row, _col) { //建構元函式
-       if(_row>=0 && _row<row && _col>=0 && _col<col){
+       if(_row>=0 && _row<rowMax && _col>=0 && _col<colMax){
         this.row = _row;
         this.col = _col;
        }
        else 
         this.row = this.col = null;
     }
-    print = function(){
+    print (){
         return ("["+this.row+", "+this.col+"]");
     }
 }
@@ -20,12 +20,12 @@ class Index {   //定義物件類別
 var aryBoxVisited = []
 var aryBox1 = []
 //var allElement = []
-for (let r = 0; r < row; r++) {
+for (let r = 0; r < rowMax; r++) {
     aryBox1.push([])
     aryBoxVisited.push([])
-    for (let c = 0; c < col; c++) {
-        var randR = Math.floor(Math.random() * Math.floor(row));
-        var randC = Math.floor(Math.random() * Math.floor(col));
+    for (let c = 0; c < colMax; c++) {
+        var randR = Math.floor(Math.random() * Math.floor(rowMax));
+        var randC = Math.floor(Math.random() * Math.floor(colMax));
         aryBox1[r].push(new Index(randR,randC))
         aryBoxVisited[r].push(0)
         //allElement.push(r+","+c)
@@ -33,19 +33,19 @@ for (let r = 0; r < row; r++) {
 }
 
  
-for (var r = 0; r < row; r++)
+for (var r = 0; r < rowMax; r++)
     console.log(JSON.stringify(aryBox1[r]))
 
 do {
     var startR=parseInt(readline.question('Row 起點? '));
     var startC=parseInt(readline.question('Col 起點? '));
-    if(isNaN(startR) || isNaN(startC) || startR<0 || startR>=row || startC<0 || startC>=col){
-        console.log("Please input Row from 0~"+(row-1)+", Col from 0~"+(col-1));
+    if(isNaN(startR) || isNaN(startC) || startR<0 || startR>=rowMax || startC<0 || startC>=colMax){
+        console.log("Please input Row from 0~"+(rowMax-1)+", Col from 0~"+(colMax-1));
         continue;
     }
  
-    for (let r = 0; r < row; r++) 
-        for (let c = 0; c < col; c++){
+    for (let r = 0; r < rowMax; r++) 
+        for (let c = 0; c < colMax; c++){
             aryBoxVisited[r][c]=0;  
         } 
 
@@ -69,7 +69,7 @@ do {
             idx = aryBox1[r][c];
             count++;
         }
-        if (count == row * col) {
+        if (count == rowMax * colMax) {
             console.log("All visited!");
             break;
         }
