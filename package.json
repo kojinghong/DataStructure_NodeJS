@@ -1,6 +1,6 @@
 {
-  "name": "datastructure_nodejs",
-  "version": "1.0.0",
+  "name": "exercise1",
+  "version": "0.0.1",
   "description": "Hello BMI",
   "dependencies": {
     "readline-sync": "^1.4.10"
@@ -13,5 +13,14 @@
     "NodeJS"
   ],
   "author": "KFHWANG",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "Hello.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kfhwang/DataStructure_NodeJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kfhwang/DataStructure_NodeJS/issues"
+  },
+  "homepage": "https://github.com/kfhwang/DataStructure_NodeJS#readme"
 }
