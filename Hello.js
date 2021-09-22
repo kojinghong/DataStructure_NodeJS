@@ -16,6 +16,8 @@ console.log("Hello! Your BMI value is "+ bmi);
 const readline = require('readline-sync');
 weight = readline.question('請輸入您的體重(kg)?');
 height = readline.question('請輸入您的身高(cm)?');  
+var bmi = weight/((height/100)**2);
 
+console.log("Hello! Your BMI value is "+ bmi);
 //not only bmi value, but also judgement
 //Ask user to input height only, is it workable?
