@@ -14,13 +14,16 @@ while (true) { //無窮迴圈
     //從floorName.indexOf()取出索引值，若為-1代表無此樓
     targetFloor = targetFloor.toUpperCase() //把輸入的小寫轉成大寫
     targetFloor = floorName.indexOf(targetFloor) //索引陣列樓層
-    targetFloor = parseInt(targetFloor) //parseInt轉成整數
+    // targetFloor = parseInt(targetFloor) //parseInt轉成整數
     if (targetFloor < 0) {
         console.log('請輸入介於' + floorName.toString() + '之間的整數') //toString 輸出所有陣列內容
         continue
     }
+    //2 用程式建立FloorName 樓層名稱 homework #2 pash() ,pop()s, unshift(),shift()
+    //3 讓JS　暫停一段時間後續行　  
     if (targetFloor == floor) {
-        console.log('到達樓層');
+        setTimeout(() => console.log('到達樓層'), 3000)
+        // console.log('到達樓層');
         break
     } else {
         //蝘餃����餅０��單炬���璅�撅�
@@ -33,10 +36,12 @@ while (true) { //無窮迴圈
                 floor = floor - 1
             // currentFloor-=1
             // currentFloor--
-            console.log("電梯在" + floorName[floor] + "樓")
+            setTimeout(() => console.log("電梯在" + floorName[floor] + "樓"), 2000)
+
         } else { //up
             while (targetFloor > floor) {
                 floor = floor + 1
+                // setTimeout(console.log("電梯在" + floorName[floor] + "樓"), 2000)
                 console.log('電梯在' + floorName[floor] + '樓')
             }
         }
