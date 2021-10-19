@@ -15,13 +15,7 @@ for (var i = 0; i < 52; i++) {
     }
 
 }
-var members = [
-    {name: 'Mike', age: 30},
-    {name: 'Jimmy', age: 25},
-    {name: 'Judy', age: 20}
-];
 
-console.log(poker.toString());
 var player1=[], player2=[], player3=[],player4=[];
 
 for (let i = 0; i < poker.length; ) {
