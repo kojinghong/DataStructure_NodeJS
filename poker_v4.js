@@ -12,6 +12,7 @@ for (var i = 0; i < 52; i++) {
             break;
         case 3:
             poker.push("D" +(parseInt(i % 13) + 1));
+            break;
     }
 
 }
@@ -55,17 +56,14 @@ player1.sort(compare)
 player1.reverse(compare)
 console.log("Player1:"+player1)
 
-console.log("Player2:"+player2)
 player2.sort(compare)
 player2.reverse(compare)
 console.log("Player2:"+player2)
 
-console.log("Player3:"+player3)
 player3.sort(compare)
 player3.reverse(compare)
 console.log("Player3:"+player3)
 
-console.log("Player4:"+player4)
 player4.sort(compare)
 player4.reverse(compare)
 console.log("Player4:"+player4)
