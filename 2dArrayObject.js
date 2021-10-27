@@ -19,7 +19,7 @@ class Index{
        }else{
             this.row = null;
             this.col = null;
-       }
+       }git
     }
     print(){ //method
         return ("["+this.row+", "+this.col+"]");
