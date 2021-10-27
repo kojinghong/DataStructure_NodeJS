@@ -3,7 +3,7 @@ function bracketMatch(inputString) {
     var isMatched = true;
     var i = 0;
     var symbol = inputString.charAt(i);
-    while (isMatched && symbol != '\n') {
+    while (isMatched && symbol != '') {
         if (symbol == '{' || symbol == '(' || symbol == '[')
             opening.push(symbol);
         if (symbol == '}' || symbol == ')' || symbol == ']') {
@@ -24,5 +24,5 @@ function bracketMatch(inputString) {
         return 'matched';
 }
 //test 
-var str= "{a = (1 + v(b[3 + c[4]]))"
+var str= "{a = (1 + v(b[3 + c[4)]))}"  
 console.log(bracketMatch(str));
