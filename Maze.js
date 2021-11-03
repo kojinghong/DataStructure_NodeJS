@@ -28,7 +28,7 @@ class Point{
 var stack=[];
 stack.push(new Point(currentRow, currentCol)); //push start point to stack
 MAZE[currentRow][currentCol]=2;
-
+var isTrackBack=false;
 //try to find exit
 //!(currentRow==exitRow && currentCol==exitCol)
 while(currentRow != exitRow || currentCol!=exitCol){
@@ -36,6 +36,10 @@ while(currentRow != exitRow || currentCol!=exitCol){
     //left
     if(MAZE[currentRow][currentCol-1] == 0){
         MAZE[currentRow][currentCol-1] = 2;
+        if(isTrackBack == true){
+            stack.push(new Point(currentRow, currentCol));
+            isTrackBack=false;
+        }
         stack.push(new Point(currentRow, currentCol-1));
         currentCol-=1;
         continue;
@@ -44,6 +48,10 @@ while(currentRow != exitRow || currentCol!=exitCol){
     //down
     if(MAZE[currentRow+1][currentCol] == 0){
         MAZE[currentRow+1][currentCol] = 2;
+        if(isTrackBack == true){
+            stack.push(new Point(currentRow, currentCol));
+            isTrackBack=false;
+        }
         stack.push(new Point(currentRow+1, currentCol));
         currentRow++;
         continue;
@@ -51,6 +59,10 @@ while(currentRow != exitRow || currentCol!=exitCol){
     //right
     if( MAZE[currentRow][currentCol+1] == 0){
         MAZE[currentRow][currentCol+1] = 2;
+        if(isTrackBack == true){
+            stack.push(new Point(currentRow, currentCol));
+            isTrackBack=false;
+        }
         stack.push(new Point(currentRow, currentCol+1));
         currentCol+=1;
         continue;
@@ -58,6 +70,10 @@ while(currentRow != exitRow || currentCol!=exitCol){
     //up
     if(MAZE[currentRow-1][currentCol] == 0){
         MAZE[currentRow-1][currentCol] = 2;
+        if(isTrackBack == true){
+            stack.push(new Point(currentRow, currentCol));
+            isTrackBack=false;
+        }
         stack.push(new Point(currentRow-1, currentCol));
         currentRow--;
         continue;
@@ -68,6 +84,7 @@ while(currentRow != exitRow || currentCol!=exitCol){
     if(stack.length>0){
        //pop previous point
        var prev= stack.pop();
+       isTrackBack = true;
        //current point set to previous point
        currentRow = prev.row;
        currentCol = prev.col;
