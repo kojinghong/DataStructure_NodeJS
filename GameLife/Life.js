@@ -58,13 +58,13 @@ Life.prototype.update = function(){
     //      }
     // }
     // this.grid; //no duplicate /copy
-    var nextGrid = JSON.parse(JSON.stringify(gird));
+    var nextGrid = JSON.parse(JSON.stringify(this.grid));
 
     for (let r = 0; r < this.row; r++) {
         for (let c = 0; c < this.col; c++) {
             var nCount = this.neighborCount(r, c);
-            if(nCount == 3 && this.getStatusAt(r,c)==DEAD) //DEAD => LIFE
-               nextGrid[r][c] = LIFE;
+            if(nCount == 3 && this.getStatusAt(r,c)==DEAD) //DEAD => LIVE
+               nextGrid[r][c] = LIVE;
             if((nCount <2 || nCount>3)) //LIFE=>DEAD 
                nextGrid[r][c] = DEAD;
         }
@@ -75,7 +75,8 @@ Life.prototype.update = function(){
 
 //unit test
 var game = new Life(100,100);
-console.log(JSON.stringify(game))
+var game2 = new Life(10,10);
+//console.log(JSON.stringify(game))
 game.Initialize();
 // console.log("3,4: "+game.neighborCount(3,4));
 // console.log("3,5: "+game.neighborCount(3,5));
