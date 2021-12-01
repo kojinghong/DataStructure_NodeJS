@@ -86,7 +86,7 @@ class Board{
         this.size = Math.floor(600/this.game.row);
         this.ctx2d = document.getElementById("gameBorad").getContext("2d");
         this.ctx2d.fillStyle = "#ff0000";
-        this.ctx2d.lineWidth = 1;
+        this.ctx2d.lineWidth = 0.5;
     }
 
     draw(){
@@ -112,7 +112,7 @@ class Board{
 
 
 //unit test
-var game = new Life(10,10);
+var game = new Life(30,30);
 //console.log(JSON.stringify(game))
 game.Initialize();
 // console.log("3,4: "+game.neighborCount(3,4));
@@ -123,5 +123,15 @@ gameBorad.draw();
 
 function next(){
     game.update();
+    gameBorad.draw();
+}
+
+function clickHandler(event){
+    var col = Math.floor(event.offsetX/gameBorad.size);
+    var row = Math.floor(event.offsetY/gameBorad.size);
+    if(game.getStatusAt(row, col)== LIVE)
+       game.setStatusAt(row,col, DEAD);
+    else
+        game.setStatusAt(row,col, LIVE);
     gameBorad.draw();
 }
