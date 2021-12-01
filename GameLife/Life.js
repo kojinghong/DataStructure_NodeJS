@@ -35,7 +35,14 @@ Life.prototype.getStatusAt = function(row, col){
        return DEAD;
     return this.grid[row][col];
 }
-
+Life.prototype.setStatusAt = function(row, col, status){
+    if(row<0 || col <0)
+       return false;
+    if(row >= this.row || col >= this.col)  
+       return false;
+    this.grid[row][col]=status;
+    return true;
+}
 Life.prototype.neighborCount = function(row, col){
     var count=0;
     count += this.getStatusAt(row-1, col-1);
