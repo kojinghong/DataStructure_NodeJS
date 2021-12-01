@@ -25,7 +25,7 @@ Life.prototype.Initialize = function(){
     this.grid[3][4] = LIVE;
     this.grid[3][5] = LIVE;
     this.grid[3][6] = LIVE;
-    this.grid[3][7] = LIVE;
+    //this.grid[3][7] = LIVE;
 }
 
 Life.prototype.getStatusAt = function(row, col){
@@ -80,12 +80,48 @@ Life.prototype.update = function(){
 
 }
 
+class Board{
+    constructor(_life){
+        this.game = _life;
+        this.size = Math.floor(600/this.game.row);
+        this.ctx2d = document.getElementById("gameBorad").getContext("2d");
+        this.ctx2d.fillStyle = "#ff0000";
+        this.ctx2d.lineWidth = 1;
+    }
+
+    draw(){
+        this.ctx2d.clearRect(0,0,600,600);
+       for (let r = 0; r < this.game.row; r++) {
+           for (let c = 0; c < this.game.col; c++) {
+               
+               if(this.game.getStatusAt(r,c)==LIVE){
+                   //fill
+                   this.ctx2d.fillRect(c*this.size, r*this.size, this.size, this.size);
+            //        this.ctx2d.strokeRect(c*this.size, r*this.size, this.size, this.size);
+            //    }else{
+            //        //stroke
+            //        this.ctx2d.strokeRect(c*this.size, r*this.size, this.size, this.size);
+               }
+               this.ctx2d.strokeRect(c*this.size, r*this.size, this.size, this.size);
+           }
+           
+       } 
+    }
+}
+
+
+
 //unit test
-var game = new Life(100,100);
-var game2 = new Life(10,10);
+var game = new Life(10,10);
 //console.log(JSON.stringify(game))
 game.Initialize();
 // console.log("3,4: "+game.neighborCount(3,4));
 // console.log("3,5: "+game.neighborCount(3,5));
 // console.log("2,5: "+game.neighborCount(2,5));
-game.update();
+var gameBorad = new Board(game);
+gameBorad.draw();
+
+function next(){
+    game.update();
+    gameBorad.draw();
+}
