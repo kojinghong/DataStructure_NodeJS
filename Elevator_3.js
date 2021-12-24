@@ -1,10 +1,10 @@
 const readline = require('readline-sync')
 
-let top = 10 //電梯頂層
-let bottom = 0 //電梯底層
-let floorName = ['B3', 'B2', 'B1', '1', '2', '2M', '3', '5', '6', '7', '8']
-let floor = 5 //目前樓層
-let targetFloor //到達樓層 //B2 -> [1]
+var top = 100 //電梯頂層
+var bottom = 0 //電梯底層
+var floorName = ['B3', 'B2', 'B1', '1', '2', '2M', '3', '5', '6', '7', '8']
+var floor = 5 //目前樓層
+var targetFloor //到達樓層 //B2 -> [1]
 
 while (true) { //無窮迴圈
     //輸入欲達樓層
@@ -50,8 +50,3 @@ while (true) { //無窮迴圈
 
 
 }
-
-//��踝蕭嚙踝蕭嚙賣�殷蕭
-//break ������嚙踝蕭
-//continue ��寡��嚙賭��嚙踝蕭嚙踝蕭嚗對蕭嚙質��嚙賣��嚙質��瞏�嚙踝蕭嚙踝蕭嚙踝蕭嚙賢�����嚙踝蕭嚙踝蕭嚙踝蕭嚙踝蕭嚙�
-
