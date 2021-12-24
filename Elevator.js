@@ -1,50 +1,44 @@
 const readline = require('readline-sync')
 
-let top = 10 //電梯頂層
-let bottom = 1 //電梯底層
-let floor = 5 //目前樓層
-let targetFloor //到達樓層
+var top = 10; //電梯頂層
+var bottom = 1; //電梯底層
+var currentFloor = 5; //目前樓層
+var targetFloor; //到達樓層
 
 while (true) { //無窮迴圈
     //輸入欲達樓層
-    targetFloor = readline.question('目前在' + floor + '樓，請問要去幾樓？')
+    targetFloor = readline.question('目前在' + floor + '樓，請問要去幾樓？'); //例如輸入3，3傳入targetFloor
 
-    //判斷輸入樓層是否合理
+    //判斷輸入樓層是否合理，如果不合理，*再讓你輸入一次*
     targetFloor = parseInt(targetFloor) //parseInt轉成整數
-    if (isNaN(targetFloor) || targetFloor < bottom || targetFloor > top) {
-        console.log('請輸入介於' + bottom + '至' + top + '之間的整數')
-        continue
+    if (isNaN(targetFloor) || targetFloor < bottom || targetFloor > top) { //isNaN沒輸入值，回傳true
+        console.log('請輸入介於' + bottom + '至' + top + '之間的整數');
+        continue; //continue（繼續）= 跳出迴圈，回到*第10行*。 再問一次你要到幾樓
     }
-    if (targetFloor == floor) {
-        console.log('到達樓層');
-        break
+    
+    if (targetFloor == currentFloor) { //到達樓層 = 目前樓層
+        console.log('到達樓層'); //顯示到達樓層
+        break; //break跳出迴圈，執行迴圈之後的程式
     } else {
-        //蝘餃����餅０��單炬���璅�撅�
-        //floor 蝘餃�� targetfloor
-        if (floor > targetFloor) { //Down
-            console.log('��餅０敺�銝�......');
-            //��寧�� for(���憪���潭��隞嗅�斗��:蝝臬��皜�)
-            //while(targetFloor <currentFloor)f
-            //for(var i=currentFloor; i>targetFloor;i--)f
-            for (; targetFloor < currentFloor; currentFloor--)
-                floor = floor - 1
-            // currentFloor-=1
-            // currentFloor--
-            console.log("電梯在" + currentFloor + "樓")
-        } else { //up
-            console.log('��餅０敺�銝�......')
-            while (targetFloor > floor) {
-                floor = floor + 1
-                console.log('電梯在' + floor + '樓')
-            }
+        //移動電梯至欲達樓層
+     if(targetFloor<currentFloor){ //down 到達樓層小於目前樓層
+        console.log("電梯往下..."); 
+        while(targetFloor < currentFloor){ 
+            currentFloor = currentFloor - 1; //目前樓層-1
+            // *第二種方法* currentFloor -= 1; 
+            // *第三種方法* currentFloor--; 
+            console.log("電梯在"+currentFloor+"樓");
         }
+        
+     }else{//up
+        console.log("電梯往上...");
+        while(targetFloor > currentFloor){ //up 到達樓層大於目前樓層
+            currentFloor = currentFloor + 1; //目前樓層+1
+            // *第二種方法* currentFloor += 1;
+            // *第三種方法* currentFloor++;
+            console.log("電梯在"+currentFloor+"樓");
+        }
+     }
     }
-
-
-
 }
-
-//��踝蕭嚙踝蕭嚙賣�殷蕭
-//break ������嚙踝蕭
-//continue ��寡��嚙賭��嚙踝蕭嚙踝蕭嚗對蕭嚙質��嚙賣��嚙質��瞏�嚙踝蕭嚙踝蕭嚙踝蕭嚙賢�����嚙踝蕭嚙踝蕭嚙踝蕭嚙踝蕭嚙�
 
